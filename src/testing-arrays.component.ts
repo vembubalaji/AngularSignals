@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  signal,
+} from '@angular/core';
 
 let userId = 0;
 const uuid = () => ++userId;
@@ -24,6 +29,9 @@ export interface User {
         <button (click)="removeUser(user.id)">remove</button>
       </li>
     </ul>
+    Total entries: {{ count() }}
+    <br>
+    <br>
   `,
   standalone: true,
   imports: [CommonModule],
@@ -31,13 +39,13 @@ export interface User {
 })
 export class TestArraysCmp {
   users = signal<User[]>([]);
+  count = computed(() => this.users().length); //Readonly signal
 
   addUser(name: string) {
-    this.users.update((users) => {
+    this.users.mutate((users) => {
       const user: User = { id: uuid(), name };
-      // mutable update also works!
-      // users.push(user); return users;
-      return [...users, user];
+      users.push(user);
+      return users;
     });
   }
 

@@ -5,6 +5,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, Routes } from '@angular/router';
 import { TestArraysCmp } from './testing-arrays.component';
 import { TestObjectsCmp } from './testing-objects.component';
+import { fromSignal } from '@angular/core/rxjs-interop';
 
 /*
   ⚠️ Please keep in mind that this is only the signals implementation. We still depend on zone and current CD strategy to propagate change in the template which might not be the case when Angular releases signals officially!
@@ -52,22 +53,4 @@ export class App {
     this.count.set(0);
   }
 }
-
-const routes: Routes = [
-  {
-    path: 'search',
-    // component: SearchComponent, // uncomment this for component with ActivatedRoute
-    component: TestArraysCmp,
-  },
-  {
-    path: 'search1',
-    // component: SearchComponent,  // uncomment this for component with ActivatedRoute
-    component: TestObjectsCmp,
-  },
-];
-
-bootstrapApplication(App, {
-  providers: [provideRouter(routes)],
-});
-
 bootstrapApplication(App);

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { fromSignal } from '@angular/core/rxjs-interop';
 
 export interface UserData {
   name: string;
