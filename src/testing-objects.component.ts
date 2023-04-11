@@ -17,14 +17,14 @@ export interface UserData {
     <input 
       placeholder="Name" 
       [value]="userData().name"
-      (keydown)="updateUser('name', $any($event.target).value)" 
+      (keyup)="updateUser('name', $any($event.target).value)" 
     /> 
 
     <input 
       type="number"
       placeholder="Age" 
       [value]="userData().age"
-      (keydown)="updateUser('age', $any($event.target).value)" 
+      (keyup)="updateUser('age', $any($event.target).value)" 
     /> 
 
     <select 
@@ -34,8 +34,8 @@ export interface UserData {
 
       <option></option>
       <option value="Angular">Angular</option>
-      <option value="Solid">Solid</option>
-      <option value="Vue">Vue</option>
+      <option value="React">React</option>
+      <option value="Java">Java</option>
     </select>
 
     <br>
